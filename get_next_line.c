@@ -6,7 +6,7 @@
 /*   By: nide-wil <nide-wil@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:55:36 by nide-wil          #+#    #+#             */
-/*   Updated: 2026/10/15 18:43:53 by nide-wil         ###   ########.fr       */
+/*   Updated: 2026/10/15 19:02:47 by nide-wil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,12 @@ char *get_next_line(int fd)
 		free(remainder);
 		remainder = new_remainder;
 	}
-	else if (remainder && *remainder)
+	else if (remainder)
 	{
-		line = ft_strdup(remainder);
+		if (*remainder)
+			line = ft_strdup(remainder);
+		else
+			line = NULL;
 		free(remainder);
 		remainder = NULL;
 	}
