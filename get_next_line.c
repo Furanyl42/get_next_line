@@ -6,12 +6,11 @@
 /*   By: nide-wil <nide-wil@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 16:55:36 by nide-wil          #+#    #+#             */
-/*   Updated: 2026/10/16 09:58:35 by nide-wil         ###   ########.fr       */
+/*   Updated: 2026/10/16 11:16:46 by nide-wil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft/libft.h"
 
 static char	*ft_read_and_join(int fd, char *remainder)
 {
