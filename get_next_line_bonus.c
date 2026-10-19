@@ -6,7 +6,7 @@
 /*   By: nide-wil <nide-wil@student.42belgium.be>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 10:15:55 by nide-wil          #+#    #+#             */
-/*   Updated: 2026/10/16 12:11:26 by nide-wil         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:55:10 by nide-wil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,20 @@ static void	ft_remove_node(t_list_gnl **head, int fd)
 
 static char	*ft_read_and_join(int fd, char *remainder)
 {
-	char	buf[BUFFER_SIZE + 1];
+	char	*buf;
 	int		bytes_read;
 	char	*tmp;
 
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
 	bytes_read = 1;
 	while (bytes_read > 0 && !ft_strchr(remainder, '\n'))
 	{
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
+			free(buf);
 			free(remainder);
 			return (NULL);
 		}
@@ -77,6 +81,7 @@ static char	*ft_read_and_join(int fd, char *remainder)
 		free(remainder);
 		remainder = tmp;
 	}
+	free(buf);
 	return (remainder);
 }
 
